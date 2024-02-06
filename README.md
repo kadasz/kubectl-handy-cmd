@@ -8,6 +8,11 @@ List of kubectl commands which I've found useful for on a daily basis because ma
 kubectl get pods -o custom-columns=ip:.status.podIP -n namespace
 `
 
+### To get a list of all pods without pods from openshift-* namespaces
+`
+kubectl get pods -A --field-selector=metadata.namespace!=openshift-* -o wide
+`
+
 ### Lists external IP adress of all nodes
 `
 kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}'
