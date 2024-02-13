@@ -33,3 +33,11 @@ kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP
 ```
 kubectl get nodes -o custom-columns=NODE:.metadata.name,'IP:.status.addresses[?(@.type=="InternalIP")].address'
 ```
+
+
+### StatefulSet - rolling update, scale up and down 
+```
+kubectl rollout restart sts sts_name
+kubectl scale --replicas=0 sts sts_name
+kubectl scale --replicas=1 sts sts_name
+```
